@@ -24,6 +24,27 @@ hidden2_size = 128
 x = tf.placeholder(tf.float32, shape=[None, input_size])
 
 # Autoencoder 구조를 정의합니다.
+#
+# [What is an autoencoder?]
+# An autoencoder is an unsupervised machine learning algorithm that
+# takes an image as input and reconstructs it using fewer number of bits.
+# That may sound like image compression, but the biggest difference between
+# an autoencoder and a general purpose image compression algorithms is that
+# in case of autoencoders, the compression is achieved by learning on a training set of data. 
+#
+# Autoencoders are similar in spirit to dimensionality reduction techniques like principal component analysis.
+# They create a space where the essential parts of the data are preserved, while non-essential ( or noisy ) parts are removed.
+#
+# Encoder: This is the part of the network that compresses the input into a fewer number of bits.
+# The space represented by these fewer number of bits is called the “latent-space” and
+# the point of maximum compression is called the bottleneck.
+# These compressed bits that represent the original input are together called
+# an “encoding” of the input.
+#
+# Decoder: This is the part of the network that
+# reconstructs the input image using the encoding of the image.
+# [https://www.learnopencv.com/understanding-autoencoders-using-tensorflow-python/]
+#
 def build_autoencoder(x):
     # 인코딩(Encoding) - 784 -> 256 -> 128
     W1 = tf.Variable(tf.random_normal(shape=[input_size, hidden1_size]))
